@@ -1,0 +1,23 @@
+broker:
+  server:
+    url: localhost:9092
+
+spring:
+  kafka:
+    template:
+      default-topic: sync-weather
+    consumer:
+      group-id: weather-archive
+      bootstrap-servers: ${broker.server.url}
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      auto-offset-reset: earliest
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: '*'
+    producer:
+      bootstrap-servers: ${broker.server.url}
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
