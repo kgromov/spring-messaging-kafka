@@ -9,6 +9,7 @@ import org.springframework.kafka.config.TopicBuilder;
 public class MessageBrokerConfig {
 
 //    @Bean
+    // Required for non-default topic
     public NewTopic topic(){
         return TopicBuilder.name("weather-archive")
                 .build();
