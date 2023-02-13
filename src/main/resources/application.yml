@@ -3,6 +3,8 @@ broker:
     url: localhost:9092
 
 spring:
+  main:
+    web-application-type: none
   kafka:
     template:
       default-topic: sync-weather
